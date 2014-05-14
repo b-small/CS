@@ -18,6 +18,7 @@ public class Scores {
 	}
 
 	public void setList() {
+		scores = new ArrayList<StatusLine>();
 		scores = StatusLine.getSaveObjects();
 	}
 
@@ -25,18 +26,28 @@ public class Scores {
 		FileReader fr = new FileReader(currentPath);
 		BufferedReader br = new BufferedReader(fr);
 
-		int numberOfLines = 0;
-
-		while (br.readLine() != null) {
-			numberOfLines++;
-		}
-
+		int numberOfLines = countLines(currentPath);
 		String[] playerInfoRead = new String[numberOfLines];
 		for (int i = 0; i < numberOfLines; i++) {
 			playerInfoRead[i] = br.readLine();
 		}
 		br.close();
 		return playerInfoRead;
+	}
+
+	public int countLines(String path) throws IOException {
+		FileReader fr = new FileReader(path);
+		BufferedReader br = new BufferedReader(fr);
+
+		String aLine = br.readLine();
+		int numberOfLines = 0;
+
+		while ((aLine) != null) {
+			numberOfLines++;
+			aLine = br.readLine();
+		}
+		br.close();
+		return numberOfLines;
 	}
 
 	public void addScore(StatusLine status) {
