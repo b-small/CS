@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class StatusLine {
 	private int level;
 	private int moves;
 	private double time;
-	private static List<StatusLine> saveObjects;
+	private static List<StatusLine> saveObjects = new ArrayList<StatusLine>();
 
 	public StatusLine(String playerName) {
 
@@ -31,7 +32,7 @@ public class StatusLine {
 	}
 
 	public void setPlayerName(String playerName) {
-		if (playerName.contains(null) || playerName.equals(" ")) {
+		if (playerName.equals(" ")) {
 			this.playerName = "guest";
 		} else {
 			this.playerName = playerName;
@@ -84,9 +85,6 @@ public class StatusLine {
 		return saveObjects;
 	}
 
-	public static void setSaveObjects(List<StatusLine> saveObjects) {
-		StatusLine.saveObjects = saveObjects;
-	}
 
 	public String toString() {
 
