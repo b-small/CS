@@ -85,11 +85,11 @@ public class StatusLine {
 		return saveObjects;
 	}
 
-
 	public String toString() {
 
-		String playerInfo = String.format("%d %s\t%.2f\t%d", this.getLevel(),
-				this.getPlayerName(), this.getTime(), this.getMoves());
+		String playerInfo = String.format("%5d %5s\t%.2f\t%5d",
+				this.getLevel(), this.getPlayerName(), this.getTime(),
+				this.getMoves());
 		return playerInfo;
 
 	}
